@@ -3,18 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { ArrowDown, Shield, Database, Users, Bot, Zap, Globe } from 'lucide-react';
 
 const HeroSection = () => {
-  const [currentStat, setCurrentStat] = useState(0);
   const [animatedNumbers, setAnimatedNumbers] = useState({
     costReduction: 0,
     support: 0,
     uptime: 0
   });
-
-  const stats = [
-    { value: 85, label: 'Average Cost Reduction', suffix: '%' },
-    { value: 24, label: 'Automated Support', suffix: '/7' },
-    { value: 99.9, label: 'Uptime Guarantee', suffix: '%' }
-  ];
 
   // Animate numbers on mount
   useEffect(() => {
@@ -33,14 +26,25 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Cycle through different value propositions
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentStat((prev) => (prev + 1) % stats.length);
-    }, 4000);
+  const handleSeeSolutions = () => {
+    const solutionsSection = document.getElementById('solutions');
+    if (solutionsSection) {
+      solutionsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-    return () => clearInterval(interval);
-  }, []);
+  const handleRequestDemo = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleDownloadWhitepaper = () => {
+    // In a real app, this would trigger a download
+    console.log('Downloading whitepaper...');
+    alert('Whitepaper download will be available soon!');
+  };
 
   return (
     <section className="relative gradient-hero min-h-screen flex items-center justify-center overflow-hidden">
@@ -91,22 +95,31 @@ const HeroSection = () => {
 
           {/* Enhanced CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up">
-            <button className="btn-accent text-lg px-8 py-4 w-full sm:w-auto group">
+            <button 
+              onClick={handleSeeSolutions}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-8 py-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 w-full sm:w-auto group"
+            >
               <span className="flex items-center justify-center">
                 <Bot className="h-5 w-5 mr-2 group-hover:animate-spin" />
                 See Our Solutions
               </span>
             </button>
-            <button className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white font-medium px-8 py-4 rounded-lg transition-all duration-200 border border-white/20 w-full sm:w-auto group">
+            <button 
+              onClick={handleRequestDemo}
+              className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white font-medium px-8 py-4 rounded-lg transition-all duration-200 border border-white/20 w-full sm:w-auto group"
+            >
               <span className="flex items-center justify-center">
                 <Zap className="h-5 w-5 mr-2 group-hover:text-yellow-300 transition-colors" />
-                Request a Personalized Demo
+                Request a Demo
               </span>
             </button>
-            <button className="text-white/90 hover:text-white font-medium underline underline-offset-4 w-full sm:w-auto group">
+            <button 
+              onClick={handleDownloadWhitepaper}
+              className="text-white/90 hover:text-white font-medium underline underline-offset-4 w-full sm:w-auto group"
+            >
               <span className="flex items-center justify-center">
                 <Globe className="h-4 w-4 mr-2 group-hover:animate-bounce-slow" />
-                Download FinTech AI Whitepaper
+                Download Whitepaper
               </span>
             </button>
           </div>

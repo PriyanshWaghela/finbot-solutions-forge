@@ -8,7 +8,7 @@ const SolutionsOverview = () => {
   const [selectedSolution, setSelectedSolution] = useState(0);
 
   return (
-    <section className="section-padding bg-white">
+    <section id="solutions" className="section-padding bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
