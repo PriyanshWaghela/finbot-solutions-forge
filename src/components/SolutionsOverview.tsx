@@ -157,7 +157,9 @@ const SolutionsOverview = () => {
             <div>
               <div className="flex items-center mb-6">
                 <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl ${solutions[selectedSolution].color} bg-opacity-10 mr-4`}>
-                  <solutions[selectedSolution].icon className={`h-8 w-8 ${solutions[selectedSolution].color.replace('bg-', 'text-')}`} />
+                  {React.createElement(solutions[selectedSolution].icon, {
+                    className: `h-8 w-8 ${solutions[selectedSolution].color.replace('bg-', 'text-')}`
+                  })}
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900">
