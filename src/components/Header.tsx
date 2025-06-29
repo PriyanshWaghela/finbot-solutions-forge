@@ -1,17 +1,14 @@
 
 import React, { useState } from 'react';
 import { Menu, X, Bot } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleRequestDemo = () => {
-    // Scroll to contact section or open demo modal
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    navigate('/signin');
   };
 
   return (
@@ -31,11 +28,11 @@ const Header = () => {
             <a href="#solutions" className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
               Solutions
             </a>
-            <Link to="/dashboard" className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
-              Dashboard
-            </Link>
             <a href="#services" className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
               Services
+            </a>
+            <a href="#pricing" className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
+              Pricing
             </a>
             <a href="#about" className="text-slate-700 hover:text-blue-600 font-medium transition-colors">
               About
@@ -75,19 +72,19 @@ const Header = () => {
               >
                 Solutions
               </a>
-              <Link 
-                to="/dashboard" 
-                className="block text-slate-700 hover:text-blue-600 font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Dashboard
-              </Link>
               <a 
                 href="#services" 
                 className="block text-slate-700 hover:text-blue-600 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Services
+              </a>
+              <a 
+                href="#pricing" 
+                className="block text-slate-700 hover:text-blue-600 font-medium transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Pricing
               </a>
               <a 
                 href="#about" 

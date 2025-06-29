@@ -1,8 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import { ArrowDown, Shield, Database, Users, Bot, Zap, Globe } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   const [animatedNumbers, setAnimatedNumbers] = useState({
     costReduction: 0,
     support: 0,
@@ -34,10 +35,7 @@ const HeroSection = () => {
   };
 
   const handleRequestDemo = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    navigate('/signin');
   };
 
   const handleDownloadWhitepaper = () => {
